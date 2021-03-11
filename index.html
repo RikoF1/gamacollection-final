@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamaCollection</title>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"/>
+
+</head>
+<body>
+    <ion-app>
+        <ion-tabs>
+            <!--Page 1 START-->
+            <ion-tab tab="mycollection">
+                <!-- HEADER START -->
+                <ion-header>
+                    <ion-toolbar colour="primary">
+                        <ion-title>My Collection</ion-title>
+                    </ion-toolbar>
+                </ion-header>
+                
+                <!--INPUT SECTION -->
+                <ion-content>
+                    <ion-list>
+                        <ion-card>
+                            <ion-card-content>
+                                <ion-item>
+                                    <ion-label>Game</ion-label>
+                                    <ion-input placeholder="Enter Game Title" type="text" id="game-co"></ion-input>   
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label>Price</ion-label>
+                                    <ion-input placeholder="Enter Value Here" type="number" id="value-co"></ion-input>
+                                </ion-item>
+                                <ion-grid>
+                                    <ion-row>
+                                        <ion-col size=8>
+                                            <ion-button id="btn-add-co" expand="block">Add to Collection</ion-button>
+                                        </ion-col>
+                                        <ion-col size=4>
+                                            <ion-button id="btn-clear-co" color="danger" expand="block">Clear All</ion-button>
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-grid>
+                                    
+                                <ion-item>
+                                    <ion-label id="co-value-output">Total Collection value is £0.00</ion-label>
+                                </ion-item>
+                            </ion-card-content>
+                        </ion-card>
+                <!-- OUTPUT SECTION -->
+                        <ion-card id="card-output-co"></ion-card>
+                    </ion-list>
+                </ion-content>         
+            </ion-tab>
+            <!--Page 1 END-->
+
+            <!--Page 2 START-->
+            <ion-tab tab="mywatchlist">
+                <!-- HEADER START -->
+                <ion-header>
+                    <ion-toolbar>
+                        <ion-title>My Watchlist</ion-title>
+                    </ion-toolbar>
+                </ion-header>
+                              
+
+                <!-- INPUT SECTION -->
+                <ion-content>
+                    <ion-list>
+                        <ion-card>
+                            <ion-card-content>
+                                <ion-item>
+                                    <ion-select placeholder="Select Console" value="" id="console-select-wl">
+                                        <ion-select-option value="DS">Nintendo DS</ion-select-option>
+                                        <ion-select-option value="GBA">GameBoy Advance</ion-select-option>
+                                        <ion-select-option value="N64">Nintendo 64</ion-select-option>
+                                        <ion-select-option value="PS1">Playstation 1</ion-select-option>
+                                        <ion-select-option value="PS2">Playstation 2</ion-select-option>
+                                        <ion-select-option value="PS3">Playstation 3</ion-select-option>
+                                        <ion-select-option value="PSP">Playstation Portable</ion-select-option>
+                                        <ion-select-option value="SNES">Super Nintendo</ion-select-option>
+                                        <ion-select-option value="Wii">Nintendo Wii</ion-select-option>
+                                    </ion-select>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-input placeholder="Game Title" type="text" id="game-input-wl"></ion-input>
+                                </ion-item>
+                                <ion-grid>
+                                    <ion-row>
+                                        <ion-col size=8>
+                                            <ion-button id="btn-add-wl" expand="block">Add to List</ion-button>
+                                        </ion-col>
+                                        <ion-col size=4>
+                                            <ion-button id="btn-clear-wl" color="danger" expand="block">Clear All</ion-button>
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-grid>                                                                    
+                            </ion-card-content>                         
+                        </ion-card>
+
+                <!-- OUTPUT SECTION -->
+                    <ion-card id="card-output-wl"></ion-card>                 
+                </ion-list>
+
+                </ion-content>
+                
+            </ion-tab>
+            <!--Page 2 END-->
+
+            <!--Page 3 START-->
+            <ion-tab tab="dbconnect">
+                <!--Header START-->
+                    <ion-header>
+                        <ion-toolbar>
+                            <ion-title>Database</ion-title>
+                        </ion-toolbar>
+                    </ion-header>
+                    <!-- INPUT SECTION -->
+                    <ion-content>
+                        <ion-card>
+                            <ion-card-content>
+                                <ion-select id="select-output-db" placeholder="Select Game"></ion-select>
+                            </ion-card-content>
+                        </ion-card>
+                    <!-- OUTPUT SECTION -->
+                        <ion-card>
+                            <ion-card-content>
+                                <ion-card-header>
+                                    <ion-card-title id="title-name-db"></ion-card-title>
+                                </ion-card-header>
+                                <ion-card-content>
+                                <ion-img id="img-display-db" src="assets/search.png"></ion-img>
+                                <ion-list id="list-output-db"></ion-list>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-content>
+            
+            </ion-tab>
+            <!--Page 3 END-->
+            
+            <ion-tab-bar slot="bottom">
+                <ion-tab-button tab="mycollection">
+                    <ion-icon name="game-controller"></ion-icon>
+                    <ion-label>My Collection</ion-label>
+                </ion-tab-button>
+
+                <ion-tab-button tab="mywatchlist">
+                    <ion-icon name="list"></ion-icon>
+                    <ion-label>My Watchlist</ion-label>
+                </ion-tab-button>
+
+                <ion-tab-button tab="dbconnect">
+                    <ion-icon name="book"></ion-icon>
+                    <ion-label>Database</ion-label>
+                </ion-tab-button>
+            </ion-tab-bar>
+        </ion-tabs>
+         
+    </ion-app>
+    <script src="app.js"></script>
+</body>
+</html>
