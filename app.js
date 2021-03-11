@@ -3,17 +3,28 @@
 
 const valueName = document.querySelector('#value-co');
 const gameName = document.querySelector('#game-co');
-const addItem = document.querySelector('#btn-add-co');
+const addItemCO = document.querySelector('#btn-add-co');
 
 const collectionList = document.querySelector('#card-output-co');
 const totalValue = document.querySelector('#co-value-output');
 let total = 0;
 
-addItem.addEventListener('click', addItemToCollection);
+addItemCO.addEventListener('click', addItemToCollection);
 
 function addItemToCollection(){
 
-  let outputCO = `${gameName.value} for: £${valueName.value}`;
+  if (valueName.value.length == 0 || gameName.value.length == 0){
+    const alert = document.createElement('ion-alert');
+    alert.header = 'Alert';
+    alert.message = 'Game Title or Price missing';
+    alert.buttons = ['Return'];
+
+    document.body.appendChild(alert);
+    return alert.present();
+
+  } else {
+
+  let outputCO = `${gameName.value} worth £${valueName.value}`;
 
   //console.log(output);
 
@@ -27,14 +38,71 @@ function addItemToCollection(){
   
   // output the value and string to label
   totalValue.textContent = "Total Collection value is £" + total.toFixed(2);
+  
+  saveCOEntry(); //function call
+  // save all inputs form page
+  function saveCOEntry(){
+    if (localStorage.getItem('COEntry') === null ){
+      COEntryArray = [];
+    } else {
+      COEntryArray = JSON.parse(localStorage.getItem('COEntry'));
+    }
+
+    COEntryArray.push(newItem.textContent);
+
+    localStorage.setItem('COEntry', JSON.stringify(COEntryArray));
+ 
+  }
 
   clearItemCO();
 
-}
+}}
 
 function clearItemCO(){
   valueName.value = "";
   gameName.value = "";
+}
+
+// get refresh info on page load //
+
+//window.onLoad = COLoadEntries
+
+// get all previous saved collection function
+function COLoadEntries(){
+  if (localStorage.getItem('COEntry') === null){
+
+  } else {
+    COEntryArray = JSON.parse(localStorage.getItem('COEntry'));
+
+    console.log(COEntryArray)
+
+    for(var i = 0; i < COEntryArray.length; i++){
+      var COEntry = COEntryArray[i];
+
+      //console.log(COEntry)
+
+      const newItem = document.createElement('ion-card-content');
+      newItem.textContent = COEntry
+      collectionList.appendChild(newItem);
+    }
+  }
+}
+
+// CLEAR ALL ENTRIES COLLECTION //
+
+const clearCO = document.querySelector('#btn-clear-co');
+clearCO.addEventListener('click', clearCOArray);
+
+function clearCOArray(){
+  localStorage.removeItem('COEntry')
+
+  const CODelete = document.querySelector('#card-output-co');
+
+  if (CODelete === null){
+
+  } else {
+    CODelete.remove()
+  }
 }
 
 // PAGE 1 END //
@@ -102,7 +170,8 @@ function clearGameInputWL(){
 
 // GET REFRESH INFO ON PAGE LOAD//
 
-window.onload = WLLoadEntries
+window.onload = WLLoadEntries;
+window.onload = COLoadEntries;
 
 // get all previous saved watchlist function
 function WLLoadEntries(){
@@ -126,7 +195,7 @@ function WLLoadEntries(){
   }
 }
 
-// CLEAR ALL ENTRIES W //
+// CLEAR ALL ENTRIES WATCHLIST //
 
 const clearWL = document.querySelector('#btn-clear-wl');
 clearWL.addEventListener('click', clearWLArray);
