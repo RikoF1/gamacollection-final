@@ -1,3 +1,11 @@
+// GET REFRESH INFO ON PAGE LOAD//
+window.onload = LoadEntries;
+
+function LoadEntries(){
+  COLoadEntries();
+  WLLoadEntries();
+}
+
 
 // PAGE 1 START //
 
@@ -63,10 +71,6 @@ function clearItemCO(){
   gameName.value = "";
 }
 
-// get refresh info on page load //
-
-//window.onLoad = COLoadEntries
-
 // get all previous saved collection function
 function COLoadEntries(){
   if (localStorage.getItem('COEntry') === null){
@@ -74,7 +78,7 @@ function COLoadEntries(){
   } else {
     COEntryArray = JSON.parse(localStorage.getItem('COEntry'));
 
-    console.log(COEntryArray)
+    //console.log(COEntryArray)
 
     for(var i = 0; i < COEntryArray.length; i++){
       var COEntry = COEntryArray[i];
@@ -95,13 +99,16 @@ clearCO.addEventListener('click', clearCOArray);
 
 function clearCOArray(){
   localStorage.removeItem('COEntry')
+  var valueName = 0;
+  total = valueName;
 
   const CODelete = document.querySelector('#card-output-co');
 
   if (CODelete === null){
 
   } else {
-    CODelete.remove()
+    CODelete.remove(); //remove all entries
+    totalValue.textContent = "Total Collection value is £" + total.toFixed(2); // clear total collection value £0
   }
 }
 
@@ -167,11 +174,6 @@ function addItemToWatchlist(){
 function clearGameInputWL(){
     gameNameInput.value = "";
 }
-
-// GET REFRESH INFO ON PAGE LOAD//
-
-window.onload = WLLoadEntries;
-window.onload = COLoadEntries;
 
 // get all previous saved watchlist function
 function WLLoadEntries(){
