@@ -223,7 +223,7 @@ const outputSelect = document.querySelector('#select-output-db');
 
 const outputList = document.querySelector('#list-output-db');
 
-const gamesList = "https://rawg-video-games-database.p.rapidapi.com/games?rapidapi-key=64ecbcb32emshb46c813445d7eb3p1b5ef1jsna3e7a4a44987";
+const gamesList = "https://rawg-video-games-database.p.rapidapi.com/games?rapidapi-key=#";
 
 getSelectData();
 
