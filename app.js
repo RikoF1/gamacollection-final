@@ -223,7 +223,7 @@ const outputSelect = document.querySelector('#select-output-db');
 
 const outputList = document.querySelector('#list-output-db');
 
-const gamesList = "https://rawg-video-games-database.p.rapidapi.com/games?rapidapi-key=#addYourOwnKeyHere";
+const gamesList = "https://api.rawg.io/api/games?key=#yourAPIKeyHere&dates=2022-09-01,2022-09-30&platforms=18,1,7"; // dates can be changed to your own filter, also platforms. Your key is self explanatory.
 
 getSelectData();
 
