@@ -3,6 +3,8 @@
 Application that was a piece of assessment for CM3131 - Mobile Application Design and Development. It uses basic HTML, CSS and JavaScript. It is built using Ionic framework.
 
 ![gamacollection-final](https://user-images.githubusercontent.com/14131412/191039696-19af09a9-044a-4d49-bc43-c3821581e124.png)
+![gamacollection-final](https://user-images.githubusercontent.com/14131412/194114455-88e171de-6acc-4b86-b389-25f23ffa6853.png)
+
 
 Gamacollection is a mobile-first application that was built with the objective of letting game collector's have their collection on their hand and know it's value at the time of checking, also, let's the user know how much they have paid for each of the items on the list.
 
